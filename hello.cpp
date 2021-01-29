@@ -59,10 +59,10 @@ int main() {
 	if (cl_status != CL_SUCCESS) {
 		throw std::runtime_error("Error in getting program logs");
 	}
-	std::string log(log_size, 'a');
+	std::vector<char> log(log_size);
 	cl_status = clGetProgramBuildInfo(program, devices[0], CL_PROGRAM_BUILD_LOG, log_size, log.data(), nullptr);
 	
-	std::cout << log << std::endl;
+	std::cout << log.data() << std::endl;
 
 	cl_kernel kernel = clCreateKernel(program, "sum", &cl_status);
 	if (cl_status != CL_SUCCESS) {
@@ -107,7 +107,7 @@ int main() {
 	for (int i = 0; i != n; ++i) {
 		//std::cout << static_cast<int>(c[i]);
 	}
-	std::cout << std::endl;
+	std::cout << "Success!" << std::endl;
 	
 	clReleaseKernel(kernel);
 	clReleaseProgram(program);
