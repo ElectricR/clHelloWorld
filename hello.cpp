@@ -105,7 +105,7 @@ int main() {
 		throw std::runtime_error("Error in reading buffer");
 	}
 	for (int i = 0; i != n; ++i) {
-		//std::cout << static_cast<int>(c[i]);
+		std::cout << static_cast<int>(c[i]);
 	}
 	std::cout << "Success!" << std::endl;
 	
